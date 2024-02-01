@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Counter = ({ children, value }) => {
-  const [count, setCount] = useState(value);
+const Counter = ({
+  children,
+  value,
+  handleIncrement,
+  handleDecrement,
+  handleReset,
+}) => {
   return (
     <div>
       <h1>{children}</h1>
-      <h2>{count}</h2>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button disabled={count === 0} onClick={() => setCount(count - 1)}>
-        -
-      </button>
-      <button disabled={count === 0} onClick={() => setCount(0)}>
-        reset
-      </button>
+      <h2>{value}</h2>
+      <div className="d-flex gap-2">
+        <button onClick={handleIncrement}>+</button>
+        <button disabled={value === 0} onClick={handleDecrement}>
+          -
+        </button>
+        <button disabled={value === 0} onClick={handleReset}>
+          reset
+        </button>
+      </div>
     </div>
   );
 };
